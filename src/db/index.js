@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://hs1957490:Nishu%402001@cluster0.qhlqz6y.mongodb.net/paytm?retryWrites=true&w=majority"
+      "MongoURI"
     );
     console.log("db Connected ");
   } catch (error) {
