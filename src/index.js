@@ -1,18 +1,21 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import connectDB from "./db/index.js";
-import { userRoute } from "./routes/user.routes.js";
-import { testRouter } from "./routes/test.routes.js";
+import mainRouter from "./routes/index.js";
+
 const port = 3000;
 const app = express();
+
+app.use(cors());
+app.use(express.json());
+
 dotenv.config({
   path: "./env",
 });
-console.log(port);
 
 // Routes
-app.use("/api/v1/test", testRouter);
-app.use("/api/v1/user", userRoute);
+app.use("/api/v1", mainRouter);
 
 connectDB()
   .then(() => {
